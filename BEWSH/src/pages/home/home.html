@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Workouts
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="item row" *ngFor="let video of videos">
+    <ion-card>
+      <div class="col col-50">
+        {{video.title}}
+        <div class="video-container">
+          <iframe width="130" height="80" [src]="video.video | youtube" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+
+      <div class="sets">
+        <form [formGroup]="setsform" (submit)="submitform()" novalidate>
+          <ion-grid>
+            <ion-row>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Set 1</ion-label>
+                  <ion-input [(ngModel)]="video.setOne" formControlName="set1" type="number" placeholder="1"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Set 2</ion-label>
+                  <ion-input [(ngModel)]="video.setTwo" formControlName="set2" type="number" placeholder="2"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Set 3</ion-label>
+                  <ion-input [(ngModel)]="video.setThree" formControlName="set3" type="number" placeholder="3"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <!--<ion-col>
+                <ion-item>
+                  <ion-label stacked>Set 4</ion-label>
+                  <ion-input formControlName="set3" type="number" placeholder="4"></ion-input>
+                </ion-item>
+              </ion-col>-->
+
+            </ion-row>
+          </ion-grid>
+
+
+        </form>
+        
+      </div>
+    </ion-card>
+  </div>
+
+
+  <div class="footer-bar-custom">
+    <button ion-button (click)=submitform() color="primary" class="global-button" block>Submit your performance</button>
+  </div>
+</ion-content>

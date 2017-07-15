@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="item row" *ngFor="let meal of meals">
+    <ion-card>
+      <form [formGroup]="mealsform" (submit)="submitform()" novalidate>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Time</ion-label>
+              </ion-item>
+              <ion-item class="content">
+                {{meal.time}}
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Meal</ion-label>
+              </ion-item>
+              <ion-item class="content">
+                {{meal.meal}}
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Cheat</ion-label>
+              </ion-item>
+              <ion-item class="content">
+                <ion-checkbox [(ngModel)]="meal.cheat" formControlName="cheat"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Whoops</ion-label>
+              </ion-item>
+              <ion-item class="content">
+                <ion-checkbox [(ngModel)]="meal.whoops" formControlName="whoops"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card>
+  </div>
+  <div class="footer-bar-custom">
+    <button ion-button (click)=submitform() color="primary" class="global-button" block>Submit your performance</button>
+  </div>
+  <!--</div>-->
+</ion-content>
